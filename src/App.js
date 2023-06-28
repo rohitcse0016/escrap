@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
+// import component ?
+import Drawer from 'react-modern-drawer'
+
+//import styles ?
+import 'react-modern-drawer/dist/index.css'
+import Dashboard from './screens/Dashboard/Dashboard.tsx'
+import { BrowserRouter,Routes,Route } from 'react-router-dom'
+import appRoutes from './routes/appRoutes.js'
+
+
+const App = () => {
+  const [isOpen, setIsOpen] = React.useState(true)
+  const toggleDrawer = () => {
+    setIsOpen((prevState) => !prevState)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Drawer open={isOpen} onClose={toggleDrawer} direction='left'>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard onClick={()=>setIsOpen(true)} />}>
+          {appRoutes}
+        </Route>
+      </Routes>
+    </BrowserRouter>
+    </Drawer>
+    // <>
+    //   <Dashboard onClick={()=>setIsOpen(true)}/>
+
+      // <Drawer open={isOpen} onClose={toggleDrawer} direction='left'>
+      //   <div>Hello World</div>
+      // </Drawer>
+    // </>
+  )
 }
 
-export default App;
+export default App
