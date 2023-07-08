@@ -5,16 +5,10 @@ import sizeConfigs from "../../configs/sizeConfigs";
 import appRoutes from "../../routes/appRoutes";
 import SidebarItem from "./SidebarItem";
 import SidebarItemCollapse from "./SidebarItemCollapse";
-import React from "react";
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = React.useState(true)
-  const toggleDrawer = () => {
-    setIsOpen((prevState) => !prevState)
-  }
   return (
     <Drawer
-      open={isOpen} onClose={toggleDrawer} 
       variant="permanent"
       sx={{
         width: sizeConfigs.sidebar.width,

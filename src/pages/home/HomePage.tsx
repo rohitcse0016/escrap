@@ -2,12 +2,12 @@ import { Avatar, Box, Card, Checkbox, FormControlLabel, Paper, Typography } from
 import Stack from '@mui/material/Stack';
 import React, { useEffect, useState } from 'react';
 import Constant from '../../utils/Constant';
-import axios from 'axios';
 import { VehicleRfid, WeightChart } from '../../type';
 import { Category } from '@mui/icons-material';
-import Chart from 'react-google-charts';
+// import Chart from 'react-google-charts';
 import { log } from 'console';
 import { json } from 'stream/consumers';
+import axios from 'axios';
 
 type Props = {};
 
@@ -116,14 +116,7 @@ const HomePage = (props: Props) => {
         ))}
       </div>
       <div style={{ width: "100%", height: 250, }}>
-        <Chart
-          onLoad={() => getVehicleWeightSummary()}
-          chartType="ColumnChart"
-          width="100%"
-          height="400px"
-          data={data1}
-          options={options}
-        />
+        
       </div>
     </div>
   );

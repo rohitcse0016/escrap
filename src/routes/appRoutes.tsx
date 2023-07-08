@@ -2,6 +2,7 @@ import DashboardPageLayout from "../pages/master/MasterPageLayout";
 import HomePage from "../pages/home/HomePage";
 import { RouteType } from "./config";
 import DashboardIndex from "../pages/master/MasterPageIndex";
+import ChangelogPage from "../pages/setting/Settings";
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
