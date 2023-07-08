@@ -1,21 +1,21 @@
-import DashboardPageLayout from "../pages/dashboard/DashboardPageLayout";
+import DashboardPageLayout from "../pages/master/MasterPageLayout";
 import HomePage from "../pages/home/HomePage";
 import { RouteType } from "./config";
-import DefaultPage from "../pages/dashboard/DefaultPage";
-import DashboardIndex from "../pages/dashboard/DashboardIndex";
-import ChangelogPage from "../pages/changelog/ChangelogPage";
-import AnalyticsPage from "../pages/dashboard/AnalyticsPage";
-import SaasPage from "../pages/dashboard/SaasPage";
-import ComponentPageLayout from "../pages/component/ComponentPageLayout";
+import DashboardIndex from "../pages/master/MasterPageIndex";
+import ChangelogPage from "../pages/setting/Settings";
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
-import AlertPage from "../pages/component/AlertPage";
-import ButtonPage from "../pages/component/ButtonPage";
-import InstallationPage from "../pages/installation/InstallationPage";
-import DocumentationPage from "../pages/documentation/DocumentationPage";
+import DocumentationPage from "../pages/corrections/Corrections";
+import VehicleMaster from "../pages/master/VehicleMaster";
+import VehicleType from "../pages/master/VehicleType";
+import Employee from "../pages/master/Employee";
+import SaveDevice from "../pages/master/SaveDevice";
+import ReportPageLayout from "../pages/reports/ComponentPageLayout";
+import BusyVisitingHour from "../pages/reports/BusyVisitingHour";
+import Report from "../pages/reports/Report";
+import SettingsPage from "../pages/setting/Settings";
 
 const appRoutes: RouteType[] = [
   {
@@ -24,96 +24,104 @@ const appRoutes: RouteType[] = [
     state: "home"
   },
   {
-    path: "/installation",
-    element: <InstallationPage />,
-    state: "installation",
-    sidebarProps: {
-      displayText: "Installation",
-      icon: <FileDownloadOutlinedIcon />
-    }
-  },
-  {
-    path: "/dashboard",
+    path: "/master",
     element: <DashboardPageLayout />,
-    state: "dashboard",
+    state: "master",
     sidebarProps: {
-      displayText: "Dashboard",
+      displayText: "Master",
       icon: <DashboardOutlinedIcon />
     },
     child: [
       {
         index: true,
         element: <DashboardIndex />,
-        state: "dashboard.index"
+        state: "master.index",
       },
       {
-        path: "/dashboard/default",
-        element: <DefaultPage />,
-        state: "dashboard.default",
+        path: "/master/vehicleMaster",
+        element: <VehicleMaster />,
+        state: "master.vehicleMaster",
         sidebarProps: {
-          displayText: "Default"
+          displayText: "VehicleMaster"
         },
       },
       {
-        path: "/dashboard/analytics",
-        element: <AnalyticsPage />,
-        state: "dashboard.analytics",
+        path: "/master/vehicleType",
+        element: <VehicleType />,
+        state: "master.vehicleType",
         sidebarProps: {
-          displayText: "Analytic"
+          displayText: "VehicleType"
         }
       },
       {
-        path: "/dashboard/saas",
-        element: <SaasPage />,
-        state: "dashboard.saas",
+        path: "/master/employee",
+        element: <Employee />,
+        state: "master.employee",
         sidebarProps: {
-          displayText: "Saas"
+          displayText: "Employee"
+        }
+      },
+      {
+        path: "/master/saveDevice",
+        element: <SaveDevice />,
+        state: "master.saveDevice",
+        sidebarProps: {
+          displayText: "SaveDevice"
         }
       }
     ]
   },
   {
-    path: "/component",
-    element: <ComponentPageLayout />,
-    state: "component",
+    path: "/reports",
+    element: <ReportPageLayout />,
+    state: "reports",
     sidebarProps: {
-      displayText: "Components",
+      displayText: "Reports",
       icon: <AppsOutlinedIcon />
     },
     child: [
       {
-        path: "/component/alert",
-        element: <AlertPage />,
-        state: "component.alert",
+        path: "/reports/report",
+        element: <Report />,
+        state: "reports.report",
         sidebarProps: {
-          displayText: "Alert"
+          displayText: "Report"
         },
       },
       {
-        path: "/component/button",
-        element: <ButtonPage />,
-        state: "component.button",
+        path: "/reports/busyVisitingHour",
+        element: <BusyVisitingHour />,
+        state: "reports.busyVisitingHour",
         sidebarProps: {
-          displayText: "Button"
+          displayText: "BusyVisitingHour"
         }
       }
     ]
   },
   {
-    path: "/documentation",
+    path: "/corrections",
     element: <DocumentationPage />,
-    state: "documentation",
+    state: "corrections",
     sidebarProps: {
-      displayText: "Documentation",
+      displayText: "Corrections",
       icon: <ArticleOutlinedIcon />
-    }
+    },
+  child: [
+    {
+      path: "/corrections/correction",
+      element: <Report />,
+      state: "corrections.correction",
+      sidebarProps: {
+        displayText: "Correction"
+      },
+    }],
   },
   {
-    path: "/changelog",
-    element: <ChangelogPage />,
-    state: "changelog",
+    path: "/settings",
+    element: <SettingsPage />,
+    state: "settings",
     sidebarProps: {
-      displayText: "Changelog",
+      displayText: "Settings",
       icon: <FormatListBulletedOutlinedIcon />
     }
   }

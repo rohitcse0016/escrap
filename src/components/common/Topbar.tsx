@@ -15,8 +15,8 @@ const Topbar = () => {
       }}
     >
       <Toolbar>
-        <Typography variant="h6">
-          React sidebar with dropdown
+        <Typography variant="h6" style={{backgroundColor:'green',width:'100%',height:50,justifyContent:'center'}}>
+          {'Solid Waste Management System'}
         </Typography>
       </Toolbar>
     </AppBar>
