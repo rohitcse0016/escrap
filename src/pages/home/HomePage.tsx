@@ -8,12 +8,14 @@ import { Category } from '@mui/icons-material';
 import { log } from 'console';
 import { json } from 'stream/consumers';
 import axios from 'axios';
+import Chart from 'react-google-charts';
 
 type Props = {};
 
 const HomePage = (props: Props) => {
   const [vehicleList, setVehicleList] = useState<VehicleRfid[]>([]);
   var [vehicleIds, setVehicleIds] = useState<any[]>([0]);
+  const [loading, setLoading]=useState(false)
   const [data1, setData] = useState<any[]>([
     ["Element", "Trip", { role: "style" }],
     ["23/06/2023", 8.94, "blue"],
@@ -71,6 +73,7 @@ const HomePage = (props: Props) => {
       })
   }
   const getVehicleWeightSummary = (vehicleID: Array<any> = []) => {
+    setLoading(false)
     let vehArr = ""
     vehArr = `[${(vehicleID)}]`
     let param = {
@@ -91,6 +94,7 @@ const HomePage = (props: Props) => {
         }
         arr.unshift(["Element", "Trip", { role: "style" }])
         setData(arr)
+        setLoading(true)
       })
   };
 
@@ -116,7 +120,14 @@ const HomePage = (props: Props) => {
         ))}
       </div>
       <div style={{ width: "100%", height: 250, }}>
-        
+        <Chart
+          onLoad={() => getVehicleWeightSummary()}
+          chartType="ColumnChart"
+          width="100%"
+          height="400px"
+          data={data1}
+          options={options}
+        />
       </div>
     </div>
   );
