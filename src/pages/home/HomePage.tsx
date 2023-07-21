@@ -65,7 +65,7 @@ const HomePage = (props: Props) => {
     getVehicleWeightSummary();
   }, [])
   const getVehicleList = () => {
-    axios.post(`https://localhost:59928/api/eScrapSolidWasteReport/GetVehicleRfid`)
+    axios.post(`http://103.20.213.26:7080/api/eScrapSolidWasteReport/GetVehicleRfid`)
       .then(res => {
         // console.log(res.data.result[0].vehicleNo) 
         // console.log(res.data.result)
@@ -83,7 +83,7 @@ const HomePage = (props: Props) => {
       allVehicles: true
     }
     console.log(param)
-    axios.post(`https://localhost:59928/api/Vehicle/VehicleWasteSummay`, param)
+    axios.post(`http://103.20.213.26:7080/api/Vehicle/VehicleWasteSummay`, param)
       .then(res => {
         // console.log(res.data.serializeData)
         setData2(JSON.parse(res.data.serializeData))
